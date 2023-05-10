@@ -1,7 +1,7 @@
 import React from "react";
 import { Segment, Item, Header, Image, Button } from "semantic-ui-react";
-// import bgImg from '../../../assets/categoryImages'
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
 export default function EventDetailedHeader({ event }) {
   const eventImageStyle = {
     filter: "brightness(30%)",
@@ -20,7 +20,7 @@ export default function EventDetailedHeader({ event }) {
       <Segment.Group>
         <Segment basic attached="top" style={{ padding: "0" }}>
           <Image
-            src={`../../../assets/categoryImages/${event.category}.jpg`}
+            src={require(`../../../assets/categoryImages/${event.category}.jpg`)}
             fluid
             style={eventImageStyle}
           />
@@ -34,7 +34,7 @@ export default function EventDetailedHeader({ event }) {
                     content={event.title}
                     style={{ color: "white" }}
                   />
-                  <p>{event.date}</p>
+                  <p>{format(event.date, "MMMM d, yyyy h:mm a")}</p>
                   <p>
                     Hosted by <strong>{event.hostedBy}</strong>
                   </p>
