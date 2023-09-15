@@ -54,3 +54,12 @@ export function cancelEventToggle(event) {
     isCancelled: !event.isCancelled,
   });
 }
+
+export function setUserProfileData(user) {
+  return db.collection("users").doc(user.id).set({
+    displayName: user.displayName,
+    email: user.email,
+    photoURL: user.photoURL,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+  });
+}
