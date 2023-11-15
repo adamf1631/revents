@@ -14,13 +14,13 @@ export function signOutFirebase() {
 
 export async function registerInFirebase(creds) {
   try {
-    const results = await firebase
+    const result = await firebase
       .auth()
       .createUserWithEmailAndPassword(creds.email, creds.password);
-    await results.user.updateProfile({
+    await result.user.updateProfile({
       displayName: creds.displayName,
     });
-    return await setUserProfileData(results.user);
+    return await setUserProfileData(result.user);
   } catch (error) {
     throw error;
   }
